@@ -1,5 +1,6 @@
 package com.cbt.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,6 +26,17 @@ public class CalendarEventsPage extends BasePage{
 
     public int records(){
         return Integer.parseInt(records.getText().substring(9, records.getText().lastIndexOf(" ")));
+    }
+
+    @FindBy(className = "input-widget")
+    public WebElement page;
+
+    public int totalRowNumber(){
+        int num = (pageNumber()-1) * tableRows.size();
+        page.clear();
+        page.sendKeys(pageNumber.getText() + Keys.ENTER);
+        num += tableRows.size();
+        return num;
     }
 
     @FindBy(xpath = "//tbody//tr")

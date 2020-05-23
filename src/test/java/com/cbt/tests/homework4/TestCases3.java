@@ -75,7 +75,7 @@ public class TestCases3 extends TestBase {
     */
 
     @Test
-    public void test3(){
+    public void verifyViewPerPage(){
 
         extentLogger = report.createTest("View per Page Verification");
 
@@ -118,8 +118,9 @@ public class TestCases3 extends TestBase {
         CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
 
         extentLogger.info("Verify that number of calendar events (rows in the table) is equals to number of records");
-        System.out.println(calendarEventsPage.tableRows.size());
-        Assert.assertEquals(calendarEventsPage.records(), calendarEventsPage.tableRows.size());
+        System.out.println(calendarEventsPage.totalRowNumber());
+        System.out.println("calendarEventsPage = " + calendarEventsPage.records());
+        Assert.assertEquals(calendarEventsPage.records(), calendarEventsPage.totalRowNumber());
 
         extentLogger.pass("Records and Number of <tr> Match Test");
 
@@ -160,7 +161,6 @@ public class TestCases3 extends TestBase {
             Assert.assertTrue(eachCalendarEventsCheckbox.isSelected());
         }
 
-        BrowserUtils.waitFor(2);
         extentLogger.pass("All Calendar Events Are Selected Test");
 
     }
@@ -174,7 +174,7 @@ public class TestCases3 extends TestBase {
      */
 
     @Test
-    public void test6(){
+    public void VerifyData(){
 
         extentLogger = report.createTest("Data Verification");
 
