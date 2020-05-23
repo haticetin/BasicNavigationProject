@@ -30,15 +30,14 @@ public class DataProvider {
 
 
     @Test(dataProvider = "data")
-    public void test(String text){
-        driver=BrowserFactory.getDriver("chrome");
+    public void test(String text) {
+        driver = BrowserFactory.getDriver("chrome");
         driver.get("https://practice-cybertekschool.herokuapp.com");
         driver.findElement(By.linkText("Status Codes")).click();
         driver.findElement(By.linkText(text)).click();
         String actualMessage = driver.findElement(By.tagName("p")).getText();
         String expectedMessage = "This page returned a " + text + " status code.";
-        Assert.assertEquals(expectedMessage, actualMessage,"message should contain explanation => ");
+        Assert.assertEquals(expectedMessage, actualMessage, "message should contain explanation => ");
     }
-
 
 }
